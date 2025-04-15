@@ -1,0 +1,195 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Gradient Background */
+    color: rgb(12, 1, 1);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 60px 20px;
+    color: white;
+    border-bottom: 3px solid #fff;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-top: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Container Styles */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.85); /* Lighter background for contrast */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Tips Section Styles */
+.tips-section {
+    text-align: left;
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+}
+
+.tips-section h2 {
+    font-size: 2rem;
+    color: #2E7D32;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.tips-section ul {
+    list-style-type: none;
+    padding-left: 0;
+    color: black;
+}
+
+.tips-section ul li {
+    margin: 10px 0;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: black;
+}
+
+/* Upload and Capture Section Styles */
+.capture-section, .upload-section, .predict-from-camera {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #2E7D32;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-btn, .capture-btn, .camera-btn {
+    background-color: #ff7043;
+    color: black;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.upload-btn:hover, .capture-btn:hover, .camera-btn:hover {
+    background-color: #ff5722;
+}
+
+/* Camera Box Styling */
+.camera-box {
+    display: inline-block;
+    border: 3px solid #4CAF50;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: #ffffffdd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+    position: relative;
+}
+
+#video, #canvas {
+    display: block;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    max-width: 100%;
+    height: auto;
+}
+
+.live-tag {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #e53935;
+    color: white;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Result Section Styles */
+.result-section {
+    margin-top: 30px;
+}
+
+#result {
+    display: none;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.4rem;
+    color: #2E7D32;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(14, 0, 0, 0.981);
+}
+
+/* Information Section Styles */
+.info-section {
+    margin-top: 40px;
+}
+
+.info-section h3 {
+    font-size: 1.8rem;
+    color: #2E7D32;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.info-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+    color: #0a0808;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .upload-btn, .capture-btn, .camera-btn {
+        width: 100%;
+        padding: 15px;
+    }
+
+    #video, #canvas {
+        width: 100%;
+    }
+}

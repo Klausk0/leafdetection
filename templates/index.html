@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌿 Plant Disease Detector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f9f6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2d6a4f;
+    }
+
+    .upload-section,
+    .result-section,
+    .tips-section {
+      margin-top: 40px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input[type="file"] {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #40916c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2d6a4f;
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 18px;
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+
+    .tagline {
+      text-align: center;
+      font-size: 18px;
+      color: #555;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      padding: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌿 Plant Disease Detector</h1>
+    <p class="tagline">Helping farmers detect plant diseases with ease!</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Tips Section -->
+    <section class="tips-section">
+      <h2>💡 Tips for Healthy Plants</h2>
+      <ul>
+        <li>🌱 Regularly inspect for spots or discoloration.</li>
+        <li>🌾 Avoid overcrowding plants.</li>
+        <li>🐞 Use organic pesticides in moderation.</li>
+        <li>💧 Water in the morning to avoid fungus.</li>
+        <li>🧹 Remove dead leaves and debris.</li>
+      </ul>
+    </section>
+
+    <!-- Upload Image Form -->
+    <section class="upload-section">
+      <h2>📂 Upload Image for Prediction</h2>
+      <form id="uploadForm" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">🔍 Predict</button>
+      </form>
+    </section>
+
+    <!-- Prediction Result -->
+    <section class="result-section">
+      <h2>Prediction Result</h2>
+      <div id="result">🌿 Your result will appear here!</div>
+    </section>
+
+  </div>
+
+  <!-- JavaScript to handle form submission and display result -->
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      fetch('/predict', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        const resultDiv = document.getElementById('result');
+        if (data.prediction) {
+          resultDiv.innerHTML = `
+            ✅ Prediction: <strong>${data.prediction.plant} - ${data.prediction.disease}</strong><br>
+            Confidence: <strong>${data.prediction.label}</strong><br>
+            Disease Percentage: <strong>${data.prediction.percentage_disease}</strong><br>
+            Days Left to Full Infection: <strong>${data.prediction.days_left}</strong>
+          `;
+        } else if (data.error) {
+          resultDiv.innerHTML = `❌ Error: ${data.error}`;
+        } else {
+          resultDiv.innerHTML = '⚠️ Unexpected response from server.';
+        }
+      })
+      .catch(err => {
+        document.getElementById('result').innerHTML = `❌ Request failed: ${err}`;
+      });
+    });
+  </script>
+
+</body>
+</html>
